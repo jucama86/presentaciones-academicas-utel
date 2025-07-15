@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ensayo UTEL | Juan Carlos Martínez Estrada</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="intro-slide">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <img src="assets/img/firma_juan_carlos_white.png" class="firma-autor" alt="Firma Juan Carlos" />
+    <div class="intro-content">
+      <h1 class="intro-title">¿Cómo se constituyen y se mejora el desempeño de los equipos de trabajo en una organización?</h1>
+      <p class="intro-subtitle">Ensayo académico</p>
+    </div>
+    <button id="boton-comenzar" class="boton-cristal">Comenzar</button>
+  </div>
+
+  <section data-titulo="Portada">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <div class="portada-campos">
+      <p class="campo-titulo">Nombre de la materia</p><p class="campo-dato">Equipos de Alto Desempeño</p>
+      <p class="campo-titulo">Licenciatura</p><p class="campo-dato">Sistemas Computacionales</p>
+      <p class="campo-titulo">Alumno</p><p class="campo-dato">Juan Carlos Martínez Estrada</p>
+      <p class="campo-titulo">Matrícula</p><p class="campo-dato">010545800</p>
+      <p class="campo-titulo">Nombre de la tarea</p><p class="campo-dato">Equipos de trabajo</p>
+      <p class="campo-titulo">Unidad</p><p class="campo-dato">1</p>
+      <p class="campo-titulo">Profesor</p><p class="campo-dato">Dr. Fernando Agustín Romo Celis</p>
+      <p class="campo-titulo">Fecha</p><p class="campo-dato">13/julio/2025</p>
+    </div>
+  </section>
+
+  <section data-titulo="Actividad">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <div class="shape-seccion">Actividad</div>
+    <div class="none">
+      <div class="editable-content">
+        <h2>Actividad</h2>
+        <p>Escribe aquí la actividad asignada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-titulo="Introducción">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <div class="shape-seccion">Introducción</div>
+    <div class="none">
+      <div class="editable-content">
+        <h2>Introducción</h2>
+        <p>Este ensayo explora los factores clave...</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-titulo="Desarrollo">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <div class="shape-seccion">Desarrollo</div>
+    <div class="none">
+      <div class="editable-content">
+        <h2>Desarrollo</h2>
+        <p>Análisis y argumentación del tema.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-titulo="Conclusión">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <div class="shape-seccion">Conclusión</div>
+    <div class="none">
+       <div class="editable-content">
+        <h2>Conclusión</h2>
+        <p>Reflexión final del ensayo.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section data-titulo="Referencias">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <div class="shape-seccion">Referencias</div>
+    <div class="none">
+      <div class="editable-content">
+        <h2>Referencias</h2>
+        <ul>
+            <li>Díaz, C., & Fernández, J. (2016). <em>Marco conceptual...</em></li>
+            <li>Grupo Bimbo. (2023). <em>Compromisos sustentables...</em></li>
+        </ul>
+      </div>
+      <button id="exportar-apa-btn" class="boton-cristal" style="margin-top: 2rem; font-size: 11pt; padding: 10px 15px;">Exportar Referencias (.txt)</button>
+    </div>
+  </section>
+
+  <section data-titulo="Agradecimientos">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <div class="none">
+      <h2>Agradecimientos</h2><p>Gracias a UTEL, al profesor y al equipo académico.</p><br><br><br><br>
+      <button id="btn-evaluacion" class="boton-cristal">Calificar ensayo</button>
+      <div id="modal-evaluacion" class="modal hidden"><div class="modal-content"><button id="cerrar-evaluacion" class="modal-close">&times;</button><img src="assets/img/Certificado_morado.png" alt="Icono de informe" class="icono-informe" /><p class="subtitulo-evaluacion">Informe Académico</p><label for="comentario">Comentario del profesor:</label><textarea id="comentario-profesor" placeholder="Escribe aquí tu retroalimentación..." rows="4"></textarea><label for="nota">Calificación:</label><input type="number" id="nota-final" min="0" max="100" /><div class="modal-buttons"><button id="guardar-evaluacion" class="boton-cristal">Guardar evaluación</button></div></div></div>
+      <div id="evaluacion-final" class="panel-evaluacion hidden"><div class="encabezado-informe"><img src="assets/img/certificado.png" alt="Ícono claro" class="icono-informe solo-web" /><img src="assets/img/Certificado_morado.png" alt="Ícono oscuro" class="icono-informe solo-print" /><p class="subtitulo-evaluacion">Informe Académico</p></div><p><strong>Comentarios:</strong> <span id="comentario-visible"></span></p><p><strong>Calificación:</strong> <span id="nota-visible"></span></p><p><strong>Evaluado por:</strong> <span id="evaluado-por"></span></p><p><strong>Fecha:</strong> <span id="fecha-evaluacion"></span></p></div>
+      <button class="boton-imprimir" onclick="window.print()">Exportar PDF</button>
+    </div>
+  </section>
+
+  <section class="slide-final" data-titulo="Final">
+    <img src="https://brandbook.utel.edu.mx/images/elementos-graficos-bg-ejemplo-7.svg" class="fondo-fin" alt="Fondo institucional UTEL" />
+    <img src="assets/img/firma_juan_carlos.png" class="firma-autor" alt="Firma Juan Carlos" />
+    <div class="cristal-final">
+      <h1 class="fin-title">Fin de la presentación</h1>
+      <p class="fin-subtitle">Gracias por tu atención</p>
+    </div>
+    <button id="reiniciar-presentacion" class="boton-reinicio">Ver presentación de nuevo</button>
+  </section>
+  
+  <div class="navegador-centro"><button id="flecha-previa" class="flecha-circular">←</button><button id="flecha-siguiente" class="flecha-circular">→</button></div>
+  <div class="contador-paginas" id="contador-paginas">1 / 10</div>
+  <button id="boton-menu" class="boton-menu">☰</button>
+  <nav id="menu-indice" class="menu-indice">
+    <h2>Contenido</h2>
+    <ul></ul>
+    <li id="indice-add-page" class="indice-add-page">+ Agregar página…</li>
+    <li id="indice-editar-contenido" class="indice-edit-page">✏️ Activar edición</li>
+  </nav>
+  
+  <template id="template-slide">
+    <section data-titulo="" data-dynamic="true">
+      <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+      <div class="shape-seccion"></div>
+      <div class="none">
+        <div class="editable-content">
+            </div>
+      </div>
+    </section>
+  </template>
+
+  <div id="modal-add-page" class="modal hidden"><div class="modal-content"><button id="btn-close-modal" class="modal-close">&times;</button><h3>Agregar nueva página</h3><label>Tipo:<select id="tipo-slide"><option>Actividad</option><option>Introducción</option><option>Desarrollo</option><option>Conclusión</option><option>Referencias</option></select></label><label>Después de:<select id="posicion-slide"></select></label><textarea id="contenido-slide" placeholder="Escribe aquí el contenido…"></textarea><div class="modal-buttons"><button id="btn-cancel" class="boton-cristal">Cancelar</button><button id="btn-confirm" class="boton-cristal">Agregar</button></div></div></div>
+  
+  <footer class="footer-utel">utel.edu.mx</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tiptap/vanilla-bundle@2.0.0-beta.216/dist/index.umd.js"></script>
+  <script src="js/editor-tiptap-v2.js"></script>
+  <script src="js/evaluacion.js"></script>
+  <script src="js/exportaAPA.js"></script>
+  <script src="js/presentacion.js"></script>
+  </body>
+</html>
