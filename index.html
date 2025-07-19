@@ -128,11 +128,14 @@
         });
 
         // Carga contenido local
-        if (contenidoLocal) {
+const contenidoLocal = localStorage.getItem('editor-bienvenida');
+
+if (contenidoLocal) {
   quill.root.innerHTML = contenidoLocal;
 } else {
   quill.root.innerHTML = `<p><em>Este espacio está destinado a incorporar el nombre del tema correspondiente a la unidad académica en curso.</em></p>`;
 }
+
  
 
         // Guarda automáticamente en localStorage
