@@ -105,7 +105,6 @@
 
 
 <!-- PASO 6.3: Activación al hacer clic + Autoguardado local Quill Script -->
-
 <script>
   let quill;
 
@@ -114,7 +113,6 @@
 
     editor.addEventListener('click', () => {
       if (!quill) {
-        // 🧊 Inicializa Quill al hacer clic
         quill = new Quill('#editor-bienvenida', {
           theme: 'snow',
           placeholder: 'Indica aquí el nombre del tema de la unidad académica en curso',
@@ -128,7 +126,6 @@
           }
         });
 
-        // 📦 Carga contenido local o muestra texto editable por defecto
         const contenidoLocal = localStorage.getItem('editor-bienvenida');
 
         if (contenidoLocal) {
@@ -137,12 +134,10 @@
           quill.root.innerHTML = `<p><em>Este espacio está destinado a incorporar el nombre del tema correspondiente a la unidad académica en curso.</em></p>`;
         }
 
-        // 💾 Guarda automáticamente en localStorage
         quill.on('text-change', () => {
           localStorage.setItem('editor-bienvenida', quill.root.innerHTML);
         });
 
-        // 🌐 Detección de estado de conexión
         if (navigator.onLine) {
           console.log('🔵 Conectado al inicio');
         } else {
