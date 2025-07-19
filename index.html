@@ -114,9 +114,10 @@
 
     editor.addEventListener('click', () => {
       if (!quill) {
+        // 🧊 Inicializa Quill al hacer clic
         quill = new Quill('#editor-bienvenida', {
           theme: 'snow',
-          placeholder: '¿Cómo se constituyen y se mejora el desempeño de los equipos de trabajo en una organización?',
+          placeholder: 'Indica aquí el nombre del tema de la unidad académica en curso',
           modules: {
             toolbar: [
               [{ header: [1, 2, false] }],
@@ -127,39 +128,33 @@
           }
         });
 
-        // Carga contenido local
-const contenidoLocal = localStorage.getItem('editor-bienvenida');
+        // 📦 Carga contenido local o muestra texto editable por defecto
+        const contenidoLocal = localStorage.getItem('editor-bienvenida');
 
-if (contenidoLocal) {
-  quill.root.innerHTML = contenidoLocal;
-} else {
-  quill.root.innerHTML = `<p><em>Este espacio está destinado a incorporar el nombre del tema correspondiente a la unidad académica en curso.</em></p>`;
-}
+        if (contenidoLocal) {
+          quill.root.innerHTML = contenidoLocal;
+        } else {
+          quill.root.innerHTML = `<p><em>Este espacio está destinado a incorporar el nombre del tema correspondiente a la unidad académica en curso.</em></p>`;
+        }
 
- 
-
-        // Guarda automáticamente en localStorage
+        // 💾 Guarda automáticamente en localStorage
         quill.on('text-change', () => {
           localStorage.setItem('editor-bienvenida', quill.root.innerHTML);
         });
 
-        // Detecta conexión inicial
+        // 🌐 Detección de estado de conexión
         if (navigator.onLine) {
           console.log('🔵 Conectado al inicio');
-          // Puedes agregar aquí lógica de sincronización con backend si lo deseas
         } else {
           console.log('🔴 Sin conexión al inicio');
         }
 
-        // Escucha cambios en tiempo real
         window.addEventListener('online', () => {
           console.log('🟢 Conexión recuperada');
-          // Aquí podrías sincronizar contenido si aplica
         });
 
         window.addEventListener('offline', () => {
           console.log('🔴 Conexión perdida');
-          // Mantén editor funcionando con datos locales
         });
       }
     });
