@@ -110,56 +110,55 @@
 <script>
   let quill;
 
-  function iniciarEditorOffline() {
-    if (!quill) {
-      quill = new Quill('#editor-bienvenida', {
-        theme: 'snow',
-        placeholder: 'Escribe aquí…',
-        modules: {
-          toolbar: [
-            [{ header: [1, 2, false] }],
-            ['bold', 'italic', 'underline'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            ['clean']
-          ]
+  document.addEventListener('DOMContentLoaded', () => {
+    const editor = document.getElementById('editor-bienvenida');
+
+    editor.addEventListener('click', () => {
+      if (!quill) {
+        quill = new Quill('#editor-bienvenida', {
+          theme: 'snow',
+          placeholder: '¿Cómo se constituyen y se mejora el desempeño de los equipos de trabajo en una organización?',
+          modules: {
+            toolbar: [
+              [{ header: [1, 2, false] }],
+              ['bold', 'italic', 'underline'],
+              [{ list: 'ordered' }, { list: 'bullet' }],
+              ['clean']
+            ]
+          }
+        });
+
+        // Carga contenido local
+        const contenidoLocal = localStorage.getItem('editor-bienvenida');
+        if (contenidoLocal) {
+          quill.root.innerHTML = contenidoLocal;
         }
-      });
 
-      const contenidoGuardado = localStorage.getItem('editor-bienvenida');
-      if (contenidoGuardado) {
-        quill.root.innerHTML = contenidoGuardado;
+        // Guarda automáticamente en localStorage
+        quill.on('text-change', () => {
+          localStorage.setItem('editor-bienvenida', quill.root.innerHTML);
+        });
+
+        // Detecta conexión inicial
+        if (navigator.onLine) {
+          console.log('🔵 Conectado al inicio');
+          // Puedes agregar aquí lógica de sincronización con backend si lo deseas
+        } else {
+          console.log('🔴 Sin conexión al inicio');
+        }
+
+        // Escucha cambios en tiempo real
+        window.addEventListener('online', () => {
+          console.log('🟢 Conexión recuperada');
+          // Aquí podrías sincronizar contenido si aplica
+        });
+
+        window.addEventListener('offline', () => {
+          console.log('🔴 Conexión perdida');
+          // Mantén editor funcionando con datos locales
+        });
       }
-
-      quill.on('text-change', function () {
-        localStorage.setItem('editor-bienvenida', quill.root.innerHTML);
-      });
-    }
-  }
-
-  window.addEventListener('load', () => {
-    if (!navigator.onLine) {
-      // Sin conexión: se activa en modo local
-      iniciarEditorOffline();
-    } else {
-      // Con conexión: puedes conectar con backend o fuente externa si lo deseas
-      iniciarEditorOffline();
-
-      // Aquí podrías sincronizar local con remoto, por ejemplo:
-      const contenidoLocal = localStorage.getItem('editor-bienvenida');
-      // Lógica opcional para comparar y actualizar si es necesario
-      // Por ejemplo, fetch hacia tu backend o base institucional
-    }
-  });
-
-  // También puedes escuchar los cambios en tiempo real
-  window.addEventListener('online', () => {
-    console.log('🔵 Conexión recuperada');
-    // Sincroniza hacia fuente oficial si aplica
-  });
-
-  window.addEventListener('offline', () => {
-    console.log('🔴 Sin conexión');
-    // Mantener editor funcionando con localStorage
+    });
   });
 </script>
 
