@@ -128,10 +128,12 @@
         });
 
         // Carga contenido local
-        const contenidoLocal = localStorage.getItem('editor-bienvenida');
         if (contenidoLocal) {
-          quill.root.innerHTML = contenidoLocal;
-        }
+  quill.root.innerHTML = contenidoLocal;
+} else {
+  quill.root.innerHTML = `<p>Este ensayo explora los factores clave que influyen en el desempeño de los equipos en entornos organizacionales.</p>`;
+}
+ 
 
         // Guarda automáticamente en localStorage
         quill.on('text-change', () => {
