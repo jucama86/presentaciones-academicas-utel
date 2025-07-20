@@ -65,7 +65,7 @@ html, body {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  height: 100px;
+  height: 50px;
   opacity: 0.8;
   z-index: 90;
 }
@@ -208,10 +208,11 @@ a {
   color: #222;
   margin-bottom: 1.2rem;
   font-size: 11pt;
-  line-height: 0.6;
+  line-height: 1.4; /* Ajustado para mejor legibilidad en editor */
   padding-left: 7cm;
   padding-right: 3cm;
   text-align: justify;
+  min-height: 20px; /* Espacio mínimo para el editor */
 }
 
 /* 12. 🧾 Formato visual APA para referencias */
@@ -310,9 +311,9 @@ a {
 
 .menu-indice {
   position: absolute;
-  top: 10px;
+  top: 45px; /* Ajustado para no superponer el botón */
   left: 2px;
-  min-width: 180px;
+  min-width: 220px; /* Ancho ajustado */
   background: rgba(30, 60, 50, 0.15);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -326,7 +327,6 @@ a {
   pointer-events: none;
   z-index: 998;
   border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: inset 0 0 25px rgba(255,255,255,0.03), 0 8px 24px rgba(0,0,0,0.15);
 }
 
 .menu-indice.activo {
@@ -337,7 +337,7 @@ a {
 
 .menu-indice h2 {
   font-size: 12pt;
-  margin-bottom: 0.0rem;
+  margin-bottom: 0.8rem; /* Espacio agregado */
   color: #00663f;
   text-transform: uppercase;
 }
@@ -354,10 +354,26 @@ a {
   cursor: pointer;
   color: #222;
   transition: color 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .menu-indice li:hover {
   color: #049e69;
+}
+
+.menu-indice li .btn-delete-slide {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 2px 5px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.menu-indice li:hover .btn-delete-slide {
+  opacity: 1;
 }
 
 /* 17. 🧾 Fin de la presentación */
@@ -379,7 +395,7 @@ a {
   position: absolute;
   bottom: 40px;
   right: 40px;
-  max-width: 120px;
+  max-width: 140px;
   height: auto;
   opacity: 0.9;
   z-index: 100;
@@ -429,43 +445,6 @@ a {
   color: white;
 }
 
-/* 19. 🧾 Imprimir presentación */
-@media print {
-  body, html {
-    background: white !important;
-    overflow: visible;
-  }
-
-  .intro-slide, .agradecimientos, .slide-final, .navegador-centro,
-  .contador-paginas, .boton-menu, .menu-indice, .shape-seccion,
-  .boton-imprimir, .footer-utel {
-    display: none !important;
-  }
-
-  section {
-    display: block !important;
-    opacity: 1 !important;
-    transform: none !important;
-    position: relative !important;
-    page-break-after: always;
-    height: auto;
-    width: auto;
-    background: none !important;
-  }
-
-  section:last-of-type {
-    page-break-after: auto;
-  }
-
-  .none {
-    padding: 3cm;
-  }
-}
-
-@page {
-  size: letter portrait;
-  margin: 2cm;
-}
 
 /* 20. 🧾 Volver a ver presentación */
 .boton-reinicio {
@@ -528,6 +507,11 @@ a {
   font-size: 1rem;
   font-weight: bold;
   z-index: 1000;
+}
+
+body.offline .footer-utel {
+    background-color: #888;
+    color: #eee;
 }
 
 /* 25. — Modal de “Agregar página” — */
@@ -594,6 +578,7 @@ a {
   padding: 0.4rem 0;
   text-align: center;
   border-top: 1px solid rgba(0,0,0,0.1);
+  margin-top: 0.5rem;
 }
 
 .indice-add-page:hover {
@@ -695,73 +680,163 @@ a {
   margin-bottom: 1.5rem;
 }
 
-/* 🌐 Pantalla */
-@media screen {
-  .solo-print {
+
+
+/* --- SECCIÓN QUILL Y CONTROLES DE EDICIÓN (CORREGIDA) --- */
+
+/* Estilos para el interruptor (toggle switch) en el menú */
+.indice-toggle-edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    cursor: default;
+}
+.switch { position: relative; display: inline-block; width: 34px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px; }
+.slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #06B706; }
+input:checked + .slider:before { transform: translateX(14px); }
+
+
+/* ESTILOS PARA LA BARRA DE HERRAMIENTAS FLOTANTE (AEROGLASS) */
+#quill-toolbar-container {
+    position: absolute;
+    z-index: 2000;
+    display: block;
+    background: rgba(45, 45, 45, 0.6); /* Fondo semitransparente */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 6px 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+#quill-toolbar-container.hidden {
     display: none;
-  }
+}
+/* Mejora la visibilidad de los íconos de la barra de herramientas sobre el fondo oscuro */
+#quill-toolbar-container .ql-stroke { stroke: #fff; }
+#quill-toolbar-container .ql-fill { fill: #fff; }
+#quill-toolbar-container .ql-picker-label { color: #fff; }
+#quill-toolbar-container .ql-picker-options { background-color: #333; }
+
+
+/* ESTILOS PARA EL ÁREA DE EDICIÓN ACTIVA (IN-PLACE) */
+.quill-target {
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px;
 }
 
-/* 🖨️ Impresión */
+/* Cuando un div se convierte en editor Quill */
+.quill-target.editing-active {
+    cursor: text;
+    /* Borde verde para indicar que se está editando */
+    box-shadow: 0 0 0 2px #06B706 !important;
+    background-color: rgba(6, 183, 6, 0.05);
+}
+
+/* Aplica el scroll y altura máxima SOLO a los contenedores de texto largos */
+.none .quill-target.editing-active.ql-container {
+    max-height: 45vh; /* Altura máxima del 45% de la ventana */
+    overflow-y: auto !important; /* Muestra el scrollbar si es necesario */
+}
+
+body.quill-read-only .quill-target {
+    cursor: default;
+}
+/* Quill agrega su propio padding, lo neutralizamos para no mover el layout */
+.quill-target.ql-editor {
+    padding: 2px 4px;
+}
+
+/* --- REGLAS DE IMPRESIÓN --- */
 @media print {
-  .solo-web {
+  body, html {
+    background: white !important;
+    overflow: visible;
+  }
+
+  .intro-slide, .agradecimientos, .slide-final, .navegador-centro,
+  .contador-paginas, .boton-menu, .menu-indice, .shape-seccion,
+  .boton-imprimir, .footer-utel {
     display: none !important;
-  }
-  .solo-print {
-    display: inline !important;
-  }
-  .encabezado-informe {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    gap: 0.6rem !important;
-    margin: 0 auto 1.2rem auto !important;
-  }
-  .icono-informe {
-    width: 28px !important;
-    height: auto !important;
-  }
-  .subtitulo-evaluacion {
-    color: black !important;
-    font-style: normal !important;
-    font-weight: 600 !important;
-    font-size: 0.95rem !important;
-    text-decoration: underline !important;
-    margin: 0 !important;
-    text-align: center !important;
   }
   
-  #modal-evaluacion, #btn-evaluacion {
+  /* CRUCIAL: Ocultar el editor centralizado al imprimir */
+  #quill-editor-wrapper {
     display: none !important;
+  }
+
+  /* Quitar resaltado de edición al imprimir */
+  .quill-target.editing-active {
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+
+  .ql-container {
+    border: none !important;
+  }
+
+  .ql-editor {
+    padding: 0 !important;
+  }
+
+  section {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    position: relative !important;
+    page-break-after: always;
+    height: auto;
+    width: auto;
+    background: none !important;
+  }
+
+  section:last-of-type {
+    page-break-after: auto;
+  }
+
+  .none {
+    padding: 3cm;
+  }
+  .portada-campos {
+    padding: 2rem 3rem;
+  }
+  .campo-dato {
+    padding-left: 7cm;
+    padding-right: 3cm;
+  }
+  
+  .quill-target {
+    color: #222 !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    font-family: Arial, sans-serif !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   #evaluacion-final {
     display: block !important;
-    margin-top: 8rem !important;
+    margin-top: 2rem !important;
     width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
     text-align: left !important;
-    padding: 1rem !important;
-    background: none !important;
+    background: #f0f0f0 !important;
     color: black !important;
     font-family: Arial, sans-serif !important;
-    border: none !important;
+    border: 1px solid #ccc !important;
     box-shadow: none !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
   }
-}
-
-
-#editor-bienvenida.ql-editor {
-  min-height: 100px;
-  font-size: 1.3rem;
-  color: white;
-  user-select: text;
-  pointer-events: auto;
-}
-
-.ql-container {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  .encabezado-informe {
+     justify-content: flex-start !important;
+  }
+  .subtitulo-evaluacion {
+    color: black !important;
+  }
 }
