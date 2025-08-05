@@ -1,0 +1,100 @@
+/* === MODO OSCURO === */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark-mode .none,
+body.dark-mode .campo-dato,
+body.dark-mode .none ul li {
+  color: #f0f0f0;
+}
+
+/* === BOTÓN FLOANTE TRANSLÚCIDO === */
+#darkModeToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 0.6rem;
+  border-radius: 50%;
+  opacity: 0.1;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  z-index: 9999;
+
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeInTop 0.6s ease-out;
+}
+
+#darkModeToggle:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+/* === ANIMACIÓN === */
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 0.1;
+    transform: translateY(0);
+  }
+}
+
+/* === IMPRESIÓN MODO CLARO === */
+@media print {
+  #darkModeToggle {
+    display: none !important;
+  }
+
+  .ql-editor {
+    color: #000 !important;
+    background-color: #fff !important;
+  }
+}
+
+
+
+
+
+
+/* === Tabla de contenido ajustada para MODO OSCURO === */
+body.dark-mode .menu-indice,
+body.dark-mode .menu-indice li,
+body.dark-mode .menu-indice h2,
+body.dark-mode .menu-indice a {
+  color: #f0f0f0 !important;
+}
+
+body.dark-mode .menu-indice {
+  background-color: rgba(64, 0, 188, 0.15); /* Más contraste y elegancia  a la tabla de contenido*/
+  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 8px 24px rgba(255,255,255,0.05);
+}
+
+body.dark-mode .menu-indice li:hover {
+  color: #ffd700; /* Dorado UTEL-style con guiño Zune ✨ */
+}
+
+body.dark-mode .menu-indice h2 {
+  color: #84ffc2; /* Verde menta vibrante para destacar */
+}
+
+
+
+
+
+/* === Hover personalizado para elementos de la tabla en MODO OSCURO === */
+body.dark-mode .menu-indice li:hover {
+  color: #06b706 !important; /* al pasar el mouse sobre el texto este cambiara de color*/
+}
+
+
+

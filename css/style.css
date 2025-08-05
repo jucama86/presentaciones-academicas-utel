@@ -1,0 +1,1091 @@
+/* 🔗 1. Estructura base */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  background-color: #f2f2f2;
+}
+
+/* 🎬 2. Pantalla de bienvenida */
+.intro-slide {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/img/Bienvenida_S1.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.intro-content {
+  width: auto;
+  max-width: auto;
+  height: 170px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+  border-radius: 0px;
+  padding: 3rem 3rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: fadeInUp 1.2s ease;
+}
+
+.intro-title {
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+/*borrarlo
+#intro-content.campo-dato {
+  font-size: clamp(0.5rem, 3vw, 2.6rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10rem;
+  text-transform: uppercase;
+  line-height: 1.3;
+}*/
+
+.intro-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  color: #eeeeee;
+}
+
+/* 🖼️ 3. Logos institucionales */
+.logo-utel {
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  height: 60px;
+  z-index: 100;
+}
+
+.firma-autor {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  height: 60px;
+  opacity: 0.8;
+  z-index: 90;
+}
+
+/* 🎞️ 4. Secciones institucionales */
+section {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1s ease, transform 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image:
+    url('../assets/img/background_right_top.png'),
+    url('../assets/img/background_footer.png'),
+    url('../assets/img/background_left_header.png');
+  background-position:
+    top right,
+    bottom center,
+    center center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size:
+    160px auto,
+    100% 20px,
+    cover;
+}
+
+section.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* 🧊 5. Contenedor de contenido sin fondo */
+.none {
+  width: 90%;
+  max-width: 900px;
+  padding: 3cm 3cm 15cm 3cm; /* Sup, Der, Inf, Izq */
+  margin: auto;
+  font-family: Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: #222;
+  text-align: justify;
+}
+
+.none h2 {
+  font-size: 11pt;
+  font-weight: bold;
+  text-decoration: underline;
+  text-transform: none;
+  text-align: left;
+}
+
+.none h1 {
+  font-size: 11pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* 🏷️ 6. Tipografía general */
+h1, h2 {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+em {
+  font-style: italic;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+/* 🖨️ 7. Botón de exportación PDF */
+.boton-imprimir {
+  position: absolute;
+  bottom: 20px;
+  right: 3px;
+  background: #00663f;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 999;
+  transition: filter 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.boton-imprimir:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 0 12px rgba(0, 102, 63, 0.6);
+  transform: translateY(-2px);
+}
+
+/* 🌐 8. Animación */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📋 9. Estilos portada académica */
+.portada-campos {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem 3rem;
+}
+
+.campo-titulo {
+  color: #06B706;
+  font-weight: bold;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  font-size: 11pt;
+  line-height: 0.6;
+  padding-left: 7cm;
+  padding-right: 3cm;
+  text-align: justify;
+}
+
+.campo-dato {
+  color: #222;
+  margin-bottom: 1.2rem;
+  font-size: 11pt;
+  line-height: 1.4; /* Ajustado para mejor legibilidad en editor */
+  padding-left: 7cm;
+  padding-right: 3cm;
+  text-align: justify;
+  min-height: 20px; /* Espacio mínimo para el editor */
+}
+
+/* 12. 🧾 Formato visual APA para referencias */
+.none ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.none ul li {
+  text-indent: -1.2rem;
+  padding-left: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  font-size: 11pt;
+  color: #222;
+  text-align: justify;
+}
+
+/* 13. 🧾 Rectángulo degradado */
+.shape-seccion {
+  position: absolute;
+  top: 100px;
+  left: -1px;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 11pt;
+  text-transform: sentencecase;
+  color: #000000;
+  background: linear-gradient(to left, #C5E0B4, #7CEB99, #EDFEE2);
+  border-radius: 0px;
+  z-index: 5;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  text-align: right;
+}
+
+/* 14. 🧾 Botón de navegación */
+.navegador-centro {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 60px;
+  z-index: 999;
+}
+
+.flecha-circular {
+  width: 25px;
+  height: 25px;
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  color: #00663f;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.flecha-circular:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.contador-paginas {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10pt;
+  font-family: Arial, sans-serif;
+  color: #444;
+  background-color: rgba(255,255,255,0.35);
+  padding: 4px 8px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+/* 16. 🧾 Tabla de contenido */
+.boton-menu {
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  font-size: 1.2rem;
+  color: #00663f;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.menu-indice {
+  position: absolute;
+  top: 45px; /* Ajustado para no superponer el botón */
+  left: 2px;
+  min-width: 220px; /* Ancho ajustado */
+  background: rgba(30, 60, 50, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  z-index: 998;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.menu-indice.activo {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menu-indice h2 {
+  font-size: 12pt;
+  margin-bottom: 0.8rem; /* Espacio agregado */
+  color: #00663f;
+  text-transform: uppercase;
+}
+
+.menu-indice ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-indice li {
+  font-size: 11pt;
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+  color: #222;
+  transition: color 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-indice li:hover {
+  color: #049e69;
+}
+
+.menu-indice li .btn-delete-slide {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 2px 5px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.menu-indice li:hover .btn-delete-slide {
+  opacity: 1;
+}
+
+/* 17. 🧾 Fin de la presentación */
+.fin-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00663f;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.fin-subtitle {
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+}
+
+.slide-final .firma-autor {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  max-width: 150px;
+  height: auto;
+  opacity: 0.9;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.fondo-fin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.slide-final {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  overflow: hidden;
+  text-align: center;
+  background-image: url("https://brandbook.utel.edu.mx/images/elementos-graficos-bg-ejemplo-7.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.cristal-final {
+  width: 100%;
+  max-width: auto;
+  background: rgba(0, 64, 43, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 0px;
+  padding: 0.5rem 3rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  animation: fadeInUp 1s ease;
+  color: white;
+}
+
+
+/* 20. 🧾 Volver a ver presentación */
+.boton-reinicio {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00663f;
+  color: white;
+  font-size: 14pt;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.boton-reinicio:hover {
+  background: #049e69;
+}
+
+/* 🎬 21. boton-comenzar */
+.boton-cristal {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 14pt;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.4s ease, background 0.3s ease;
+  z-index: 10;
+}
+
+#boton-comenzar {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.boton-cristal:hover {
+  color: #06B706;
+}
+
+/* 🟢 22. FOOTER UTEL */
+.footer-utel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #05CB18;
+  color: #ffffff;
+  text-align: center;
+  padding: 3px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+body.offline .footer-utel {
+    background-color: #888;
+    color: #eee;
+}
+
+/* 25. — Modal de “Agregar página” — */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: grid;
+  place-items: center;
+  z-index: 2000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 320px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-content label {
+  display: block;
+  margin: 0.8rem 0 0.4rem;
+  font-size: 0.9rem;
+}
+
+.modal-content select,
+.modal-content textarea,
+.modal-content input {
+  width: 100%;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.modal-content textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+/* — Item “+ Agregar página…” en el índice — */
+.indice-add-page {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.4rem 0;
+  text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin-top: 0.5rem;
+}
+
+.indice-add-page:hover {
+  color: #00663f;
+}
+
+/* 26. ✖ Botón de cierre del modal */
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #333;
+}
+
+#modal-evaluacion .modal-close {
+  color: white;
+}
+
+/* 27.2 🔘 Botón “Calificar ensayo” */
+#btn-evaluacion {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 8rem;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+#btn-evaluacion:hover {
+  color: #06B706;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* 27.2 🧊 Ventana emergente de evaluación */
+#modal-evaluacion .modal-content {
+  background: rgba(0, 64, 43, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  width: clamp(280px, 30vw, 440px);
+  color: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* 27.6 🧾 Panel fijo con evaluación ya guardada (impreso) */
+.panel-evaluacion {
+  width: clamp(320px, 50vw, 520px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(51, 0, 117, 0.35);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  color: white;
+  text-align: left;
+}
+
+.panel-evaluacion.hidden {
+    display: none;
+}
+
+.panel-evaluacion p {
+  margin: 0.8rem 0;
+  line-height: 1.6;
+}
+
+.nota-visible {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #06B706;
+}
+
+.encabezado-informe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.icono-informe {
+  width: 56px;
+  height: auto;
+}
+
+.subtitulo-evaluacion {
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  text-decoration: underline;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+}
+
+
+
+/* --- SECCIÓN QUILL Y CONTROLES DE EDICIÓN (CORREGIDA) --- */
+
+/* Estilos para el interruptor (toggle switch) en el menú */
+.indice-toggle-edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    cursor: default;
+}
+.switch { position: relative; display: inline-block; width: 34px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px; }
+.slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #06B706; }
+input:checked + .slider:before { transform: translateX(14px); }
+
+
+/* ESTILOS PARA LA BARRA DE HERRAMIENTAS FLOTANTE (AEROGLASS) */
+#quill-toolbar-container {
+    position: absolute;
+    z-index: 2000;
+    display: block;
+    background: rgba(45, 45, 45, 0.6); /* Fondo semitransparente */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 6px 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+#quill-toolbar-container.hidden {
+    display: none;
+}
+/* Mejora la visibilidad de los íconos de la barra de herramientas sobre el fondo oscuro */
+#quill-toolbar-container .ql-stroke { stroke: #fff; }
+#quill-toolbar-container .ql-fill { fill: #fff; }
+#quill-toolbar-container .ql-picker-label { color: #fff; }
+#quill-toolbar-container .ql-picker-options { background-color: #333; }
+
+
+/* ESTILOS PARA EL ÁREA DE EDICIÓN ACTIVA (IN-PLACE) */
+.quill-target {
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+/* Cuando un div se convierte en editor Quill */
+.quill-target.editing-active {
+    cursor: text;
+    /* Borde verde para indicar que se está editando */
+    box-shadow: 0 0 0 2px #06B706 !important;
+    background-color: rgba(6, 183, 6, 0.05);
+}
+
+/* Aplica el scroll y altura máxima SOLO a los contenedores de texto largos */
+.none .quill-target.editing-active.ql-container {
+    max-height: 45vh; /* Altura máxima del 45% de la ventana */
+    overflow-y: auto !important; /* Muestra el scrollbar si es necesario */
+}
+
+body.quill-read-only .quill-target {
+    cursor: default;
+}
+/* Quill agrega su propio padding, lo neutralizamos para no mover el layout */
+.quill-target.ql-editor {
+    padding: 2px 4px;
+}
+
+
+/* Ajuste sugerido para mayor visibilidad */
+
+.quill-action {
+  background-color: rgba(255,255,255,0.08); /* Sutil fondo claro */
+  border: 1px solid rgba(255,255,255,0.5);
+  color: #ffffff;
+  text-shadow: 0 0 2px rgba(255,255,255,0.6); /* Brillo sutil */
+  padding: 6px 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quill-action:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+
+
+#cancel-feedback {
+  background-color: #d32f2f; /* Rojo institucional */
+  text-shadow: none;
+}
+
+
+
+.feedback {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  background-color: #009688; /* UTEL-style color */
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.feedback.hidden {
+  display: none;
+}
+
+
+.feedback:not(.hidden) {
+  animation: feedbackFadeUp 0.4s ease;
+}
+
+@keyframes feedbackFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+.quill-action.active {
+  background-color: #00C41C !important;
+  color: #fff;
+  border-color: #00C41C;
+}
+
+
+
+/* Ajuste de insertar Imagenes y tablas */
+
+/* --- ESTILOS PARA FUNCIONES DE QUILL AÑADIDAS --- */
+
+/* 1. Modal de inserción de imagen */
+#image-modal {
+  background: rgba(45, 45, 45, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  color: white;
+  font-family: Arial, sans-serif;
+  width: 250px;
+}
+#image-modal p {
+  margin: 0 0 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.image-modal-options {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+.image-modal-options button {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #06B706;
+  background-color: transparent;
+  color: #06B706;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.image-modal-options button:hover {
+  background-color: #06B706;
+  color: white;
+}
+
+/* 2. Selector de tabla */
+.table-picker-cell {
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+/* 3. Estilo de imagen seleccionada para redimensionar */
+.ql-editor img.ql-image-selected {
+  outline: 3px solid #06B706; /* Borde verde al seleccionar */
+  box-shadow: 0 0 10px rgba(6, 183, 6, 0.5);
+}
+
+/* 4. Mejoras a las tablas de quill-better-table */
+.ql-snow .ql-editor table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+.ql-snow .ql-editor td {
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+}
+
+/* 5. Asegurar que los botones tengan el mismo estilo */
+#insert-image-trigger, #insert-table-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  vertical-align: middle;
+}
+#insert-image-trigger img, #insert-table-btn img {
+    filter: brightness(0) invert(1);
+}
+
+
+/* 🧾 Efectos de iluminacion a los botones de la barra de edicion de texto */
+
+/* 🎨 Botones Quill sobre fondo oscuro */
+.ql-toolbar .ql-formats button {
+  background-color: white;
+  color: #4E4E4E;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ql-toolbar .ql-formats button svg {
+  fill: currentColor;
+  transition: fill 0.2s ease;
+}
+
+/* ✨ Hover: verde translúcido + ícono verde */
+.ql-toolbar .ql-formats button:hover {
+  background-color: rgba(6, 183, 6, 0.1);
+  color: #06B706;
+}
+
+/* ✅ Activo: fondo verde sólido + ícono blanco */
+.ql-toolbar .ql-formats button.ql-active {
+  background-color: #06B706 !important;
+  color: white !important;
+}
+
+
+
+
+.quill-action svg {
+  fill: white !important;
+}
+
+
+
+
+/* 19. 🧾 Imprimir presentación */
+@media print {
+  body, html {
+    background: white !important;
+  }
+
+  .intro-slide,
+  .agradecimientos,
+  .slide-final,
+  .navegador-centro,
+  .contador-paginas,
+  .boton-menu,
+  .menu-indice,
+  .shape-seccion,
+  .boton-imprimir {
+    display: none !important;
+  }
+
+  section {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    position: relative !important;
+    page-break-after: always;
+  }
+
+  section:last-of-type {
+    page-break-after: auto;
+  }
+
+  .none {
+    padding: 3cm;
+  }
+}
+
+@page {
+  size: letter portrait;
+  margin: 2cm;
+}
+
+
+
+
+
+/* 
+  --- CODIGO NO FUNCIONAL PERO QUE PUEDE SERVIR EN UN FUTURO REGLAS DE IMPRESIÓN (Versión UTEL-JCM v1.3) ---
+  @media print {
+    body, html {
+      background: white !important;
+      overflow: visible;
+    }
+
+    .intro-slide, .agradecimientos, .slide-final, .navegador-centro,
+    .contador-paginas, .boton-menu, .menu-indice, .shape-seccion,
+    .boton-imprimir, .footer-utel {
+      display: none !important;
+    }
+
+    #quill-editor-wrapper {
+      display: none !important;
+    }
+
+    .quill-target.editing-active {
+      box-shadow: none !important;
+      background-color: transparent !important;
+    }
+
+    .ql-container {
+      border: none !important;
+    }
+
+    .ql-editor {
+      padding: 0 !important;
+    }
+
+    section {
+      display: block !important;
+      opacity: 1 !important;
+      transform: none !important;
+      position: relative !important;
+      page-break-after: always;
+      height: auto;
+      width: auto;
+      background: none !important;
+    }
+
+    section:last-of-type {
+      page-break-after: auto;
+    }
+
+    .none {
+      padding: 3cm;
+    }
+
+    .portada-campos {
+      padding: 2rem 3rem;
+    }
+
+    .campo-dato {
+      padding-left: 7cm;
+      padding-right: 3cm;
+    }
+
+    .quill-target {
+      color: #222 !important;
+      font-size: 11pt !important;
+      line-height: 1.5 !important;
+      font-family: Arial, sans-serif !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    #evaluacion-final {
+      display: block !important;
+      margin-top: 2rem !important;
+      width: 100% !important;
+      text-align: left !important;
+      background: #f0f0f0 !important;
+      color: black !important;
+      font-family: Arial, sans-serif !important;
+      border: 1px solid #ccc !important;
+      box-shadow: none !important;
+      border-radius: 8px !important;
+      padding: 1rem !important;
+    }
+
+    .encabezado-informe {
+      justify-content: flex-start !important;
+    }
+
+    .subtitulo-evaluacion {
+      color: black !important;
+    }
+  }
+*/
+
+

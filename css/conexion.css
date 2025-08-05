@@ -1,0 +1,47 @@
+/* === Indicador de Conexión === */
+.connection-status.aeroglass {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 255, 0, 0.2); /* Verde */
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+  animation: pulse 2s infinite;
+}
+
+.connection-status.offline {
+  background: rgba(47, 47, 47, 0.2); /* Gris humo */
+  animation: pulseRed 2s infinite;
+}
+
+.connection-status.syncing {
+  background: rgba(37, 99, 235, 0.2); /* Azul Windows 11 */
+  animation: pulseBlue 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+@keyframes pulseRed {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+@keyframes pulseBlue {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@media print {
+  #connectionStatus {
+    display: none !important;
+  }
+}
