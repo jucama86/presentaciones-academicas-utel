@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ensayo UTEL | Juan Carlos Martínez Estrada</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="https://brandbook.utel.edu.mx/images/isotipo-color.svg">
+  
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <!-- Agregamos Font Awesome para los íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  
+</head>
+
+<body>
+
+  <div class="intro-slide">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <img src="assets/img/firma_juan_carlos_white.png" class="firma-autor" alt="Firma Juan Carlos" />
+    <div class="intro-content">
+      <h1 class="intro-title">¿Cómo se constituyen y se mejora el desempeño de los equipos de trabajo en una organización?</h1>
+      <p class="intro-subtitle">Ensayo académico</p>
+    </div>
+    <button id="boton-comenzar" class="boton-cristal">Comenzar</button>
+  </div>
+
+  <section data-titulo="Portada">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <div class="portada-campos"><div style="margin-top: 160px;"></div>
+      <p class="campo-titulo">Nombre de la materia</p><div id="content-portada-materia" class="campo-dato quill-target">Equipos de Alto Desempeño</div>
+      <p class="campo-titulo">Licenciatura</p><div id="content-portada-licenciatura" class="campo-dato quill-target">Sistemas Computacionales</div>
+      <p class="campo-titulo">Alumno</p><div id="content-portada-alumno" class="campo-dato quill-target">Juan Carlos Martínez Estrada</div>
+      <p class="campo-titulo">Matrícula</p><div id="content-portada-matricula" class="campo-dato quill-target">010545800</div>
+      <p class="campo-titulo">Nombre de la tarea</p><div id="content-portada-tarea" class="campo-dato quill-target">Equipos de trabajo</div>
+      <p class="campo-titulo">Unidad</p><div id="content-portada-unidad" class="campo-dato quill-target">1</div>
+      <p class="campo-titulo">Profesor</p><div id="content-portada-profesor" class="campo-dato quill-target">Dr. Fernando Agustín Romo Celis</div>
+      <p class="campo-titulo">Fecha</p><div id="content-portada-fecha" class="campo-dato quill-target">13/julio/2025</div>
+    </div>
+  </section>
+
+  <section data-titulo="Actividad"><img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" /><div class="shape-seccion">Actividad</div><div class="none"><br><h2>Actividad</h2><div id="content-actividad" class="quill-target">Escribe aquí la actividad asignada.</div></div></section>
+  <section data-titulo="Introducción"><img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" /><div class="shape-seccion">Introducción</div><div class="none"><br><h2>Introducción</h2><div id="content-introduccion" class="quill-target">Este ensayo explora los factores clave...</div></div></section>
+  <section data-titulo="Desarrollo"><img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" /><div class="shape-seccion">Desarrollo</div><div class="none"><br><h2>Desarrollo</h2><div id="content-desarrollo" class="quill-target">Análisis y argumentación del tema.</div></div></section>
+  <section data-titulo="Conclusión"><img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" /><div class="shape-seccion">Conclusión</div><div class="none"><br><h2>Conclusión</h2><div id="content-conclusion" class="quill-target">Reflexión final del ensayo.</div></div></section>
+  
+  <section data-titulo="Referencias">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <div class="shape-seccion">Referencias</div>
+    <div class="none"><br><h2>Referencias</h2>
+      <div id="content-referencias" class="quill-target"><ul><li>Díaz, C., & Fernández, J. (2016). <em>Marco conceptual...</em></li><li>Grupo Bimbo. (2023). <em>Compromisos sustentables...</em></li></ul></div>
+      <button id="exportar-apa-btn" class="boton-cristal" style="margin-top: 2rem; font-size: 11pt; padding: 10px 15px;">Exportar Referencias (.txt)</button>
+    </div>
+  </section>
+
+  <section data-titulo="Agradecimientos">
+    <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+    <div class="none">
+      <h2>Agradecimientos</h2><div id="content-agradecimientos" class="quill-target">Gracias a UTEL, al profesor y al equipo académico....</div>
+      <br><br>
+    <!--  <button id="btn-evaluacion" class="boton-cristal">Calificar ensayo</button>
+      <div id="modal-evaluacion" class="modal hidden"><div class="modal-content"><button id="cerrar-evaluacion" class="modal-close">&times;</button><img src="assets/img/Certificado_morado.png" alt="Icono de informe" class="icono-informe" /><p class="subtitulo-evaluacion">Informe Académico</p><label for="comentario">Comentario del profesor:</label><textarea id="comentario-profesor" placeholder="Escribe aquí tu retroalimentación..." rows="4"></textarea><label for="nota">Calificación:</label><input type="number" id="nota-final" min="0" max="100" /><div class="modal-buttons"><button id="guardar-evaluacion" class="boton-cristal">Guardar evaluación</button></div></div></div>
+      <div id="evaluacion-final" class="panel-evaluacion hidden"><div class="encabezado-informe"><img src="assets/img/certificado.png" alt="Ícono claro" class="icono-informe solo-web" /><img src="assets/img/Certificado_morado.png" alt="Ícono oscuro" class="icono-informe solo-print" /><p class="subtitulo-evaluacion">Informe Académico</p></div><p><strong>Comentarios:</strong> <span id="comentario-visible"></span></p><p><strong>Calificación:</strong> <span id="nota-visible"></span></p><p><strong>Evaluado por:</strong> <span id="evaluado-por"></span></p><p><strong>Fecha:</strong> <span id="fecha-evaluacion"></span></p></div>
+      <button class="boton-imprimir" onclick="window.print()">Exportar PDF</button>
+    </div>-->
+  </section>
+
+
+
+<!-- MODULO: Evaluación y Calificación -->
+<section data-titulo="Informe Académico">
+  <img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" />
+  <div class="none">
+    <h1>Informe Académico</h1><br>
+    <div class="slide-content">	
+      <div class="grid-evaluacion">
+        <div>
+          <h3>Evaluación del Ensayo</h3>
+
+          <div class="bloque-calculo">
+            <label><strong>Modo de cálculo:</strong></label>
+            <select id="modoCalculo">
+              <option value="promedio">Promedio (escala 10)</option>
+              <option value="sumatoria">Sumatoria (ej. 1.7 puntos)</option>
+            </select>
+          </div>
+
+          <div class="campos-evaluacion">
+            <div class="campo"><label for="contenido">Contenido:</label><input id="contenido" type="number" min="0" max="10" placeholder="0"></div>
+            <div class="campo"><label for="organizacion">Organización:</label><input id="organizacion" type="number" min="0" max="10" placeholder="0"></div>
+            <div class="campo"><label for="fuentes">Fuentes:</label><input id="fuentes" type="number" min="0" max="10" placeholder="0"></div>
+            <div class="campo"><label for="apa">APA:</label><input id="apa" type="number" min="0" max="10" placeholder="0"></div>
+            <div class="campo"><label for="finalScore"><strong>Final:</strong></label><input id="finalScore" type="number" min="0" max="10" value="0" readonly></div>
+          </div>
+        </div>
+</div>
+        <div>
+          <h3>Retroalimentación</h3>
+          <textarea id="retro" placeholder="Escribe aquí tu retroalimentación..."></textarea>
+          <p><strong>Fecha de evaluación:</strong> <span id="fechaEvaluacion"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cargar módulo -->
+<link rel="stylesheet" href="css/informeAcademico.css">
+<script src="js/informeAcademico.js" defer></script>
+
+
+  <section class="slide-final" data-titulo="Final">
+    <img src="https://brandbook.utel.edu.mx/images/elementos-graficos-bg-ejemplo-7.svg" class="fondo-fin" alt="Fondo institucional UTEL" />
+    <img src="assets/img/firma_juan_carlos.png" class="firma-autor" alt="Firma Juan Carlos" />
+    <div class="cristal-final">
+      <h1 class="fin-title">Fin de la presentación</h1>
+      <p class="fin-subtitle">Gracias por tu atención</p>
+    </div>
+    <button id="reiniciar-presentacion" class="boton-reinicio">Ver presentación de nuevo</button>
+  </section>
+
+  <div class="navegador-centro"><button id="flecha-previa" class="flecha-circular">←</button><button id="flecha-siguiente" class="flecha-circular">→</button></div>
+  <div class="contador-paginas" id="contador-paginas">1 / 10</div>
+
+  <button id="boton-menu" class="boton-menu">☰</button>
+  <nav id="menu-indice" class="menu-indice">
+    <h2>Contenido</h2>
+    <ul></ul>
+    <li class="indice-add-page" id="indice-add-page">+ Agregar página…</li>
+    <li class="indice-toggle-edit">
+        <span>Modo Edición</span>
+        <label class="switch"><input type="checkbox" id="toggle-edit-mode"><span class="slider round"></span></label>
+    </li>
+  </nav>
+
+  <template id="template-slide"><section data-titulo="" data-dynamic="true"><img src="https://brandbook.utel.edu.mx/images/logo-utel.svg" class="logo-utel" alt="Logo UTEL" /><div class="shape-seccion"></div><div class="none"><h2></h2><div class="slide-content quill-target"></div></div></section></template>
+  
+  <div id="modal-add-page" class="modal hidden"><div class="modal-content"><button id="btn-close-modal" class="modal-close">&times;</button><h3>Agregar nueva página</h3><label>Tipo:<select id="tipo-slide"><option>Actividad</option><option>Introducción</option><option>Desarrollo</option><option>Conclusión</option><option>Referencias</option></select></label><label>Después de:<select id="posicion-slide"></select></label><textarea id="contenido-slide" placeholder="Escribe aquí el contenido…"></textarea><div class="modal-buttons"><button id="btn-cancel" class="boton-cristal">Cancelar</button><button id="btn-confirm" class="boton-cristal">Agregar</button></div></div></div>
+  
+  
+<!-- Barra de Edicion de Texto -->
+<div id="quill-toolbar-container" class="hidden">
+  <span class="ql-formats">
+    <select class="ql-header" title="Estilo de encabezado">
+      <option value="1" title="Encabezado 1"></option>
+      <option value="2" title="Encabezado 2"></option>
+      <option value="3" title="Encabezado 3"></option>
+      <option selected title="Texto normal"></option>
+    </select>
+  </span>
+  <span class="ql-formats">
+    <button class="ql-bold" title="Negrita"></button>
+    <button class="ql-italic" title="Cursiva"></button>
+    <button class="ql-underline" title="Subrayado"></button>
+    <button class="ql-strike" title="Tachado"></button>
+  </span>
+  <span class="ql-formats">
+    <button class="ql-list" value="ordered" title="Lista numerada"></button>
+    <button class="ql-list" value="bullet" title="Lista con viñetas"></button>
+    <button class="ql-indent" value="-1" title="Disminuir sangría"></button>
+    <button class="ql-indent" value="+1" title="Aumentar sangría"></button>
+  </span>
+  <span class="ql-formats">
+    <select class="ql-align" title="Alineación de párrafo"></select>
+  </span>
+  <span class="ql-formats">
+    <button class="ql-link" title="Insertar enlace"></button>
+    <button class="ql-clean" title="Eliminar formato del texto"></button>
+  </span>
+  <span class="ql-formats" id="quill-toolbar-actions" style="display: flex; gap: 8px; margin-top: 6px;">
+  <button id="quill-undo" class="quill-action" title="Deshacer">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="white">
+      <path d="M12 5v2.79c3.46.69 6 3.81 6 7.45h2c0-4.78-3.61-8.76-8-9.71V5l-5 4 5 4z"/>
+    </svg>
+  </button>
+  <button id="quill-redo" class="quill-action" title="Rehacer">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="white">
+    <path d="M12 5v2.79C7.61 8.74 4 12.72 4 17.5h2c0-3.64 2.54-6.76 6-7.45V13l5-4-5-4z"/>  
+    </svg>
+  </button>
+<button id="quill-insert-video" class="quill-action" title="Agregar video">
+  <img src="assets/img/video-camera-svgrepo-com.svg" width="18" height="18" style="filter: brightness(0) invert(1);" alt="Agregar video">
+</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Botón con ícono 
+<button id="insert-image-trigger" class="quill-action" title="Agregar imagen">
+  <img src="assets/img/add-image.svg" alt="Insertar Imagen" style="width:24px; height:24px;" />
+</button>
+
+ Modal 
+<div id="image-modal" style="display:none;">
+  <p>¿Elige la opcion?</p>
+  <button id="choose-file-btn">Local</button>
+  <button id="choose-url-btn">URL</button>
+  <input type="file" id="image-upload" accept="image/*" style="display:none" />
+</div>-->
+
+
+<!-- Contenedor del editor -->
+<div id="editor"></div>
+
+<!-- Botón con ícono agregar imagen -->
+<button id="insert-image-trigger" class="quill-action" title="Agregar imagen">
+  <img src="assets/img/add-image.svg" alt="Insertar Imagen" style="width:24px; height:24px;" />
+</button>
+
+<!-- Modal visual -->
+<div id="image-modal" class="image-modal" style="display:none">
+  <div class="image-options">
+    <button id="choose-file-btn">
+      <img src="assets/img/Folder_img.png" alt="Local" /><span>Local</span>
+    </button>
+    <button id="choose-url-btn">
+      <img src="assets/img/Link.png" alt="URL" /><span>URL</span>
+    </button>
+  </div>
+  <input type="file" id="image-upload" accept="image/*" style="display:none" />
+</div>
+
+
+
+
+
+
+
+
+
+
+  <button id="quill-accept" class="quill-action" title="Aceptar edición">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="white">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+    </svg>
+  </button>
+  <button id="quill-cancel" class="quill-action" title="Cancelar edición">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="white">
+      <path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.41L10.59 13.41 4.29 19.71 2.88 18.3 9.17 12 2.88 5.71 4.29 4.29 10.59 10.59 16.88 4.29z"/>
+    </svg>
+  </button>
+</span>
+  <button id="insert-table-btn">Tabla</button>
+  
+
+  <!--BORRAR ESTO
+  <span class="ql-formats" id="quill-toolbar-actions" style="display:flex; gap:8px; margin-top:6px;">
+    <button class="quill-action quill-undo" title="Deshacer cambios">⤺</button>
+    <button class="quill-action quill-redo" title="Rehacer cambios">⤻</button>
+    <button id="quill-accept" class="quill-action" title="Aceptar edición">✔</button>
+    <button id="quill-cancel" class="quill-action" title="Cancelar edición">✖</button>
+  </span>  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/quill-better-table@1.2.10/dist/quill-better-table.min.js"></sc
+--> 
+</div>
+
+
+
+
+
+
+  <footer class="footer-utel">utel.edu.mx</footer>
+
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script src="js/autoguardado.js"></script>
+  <script src="js/quill-manager.js"></script>
+  <script src="js/presentacion.js"></script>
+  <script src="js/evaluacion.js"></script>
+  <script src="js/exportaAPA.js"></script>
+  
+
+<!-- MODULO: Indicador de Conexión -->
+<div id="connectionStatus" class="connection-status aeroglass online">
+  <i class="fas fa-circle"></i> <span>En línea</span>
+</div>
+
+<!-- Cargar los módulos -->
+<link rel="stylesheet" href="css/conexion.css">
+<script src="js/conexion.js" defer></script>
+
+
+<!-- Boton modo oscuro -->
+<div id="darkModeToggle">🌙</div>
+
+<!-- Cargar el modo oscuro -->
+<script type="module">
+  import { initThemeToggle } from './js/dark-mode.js';
+  window.addEventListener('DOMContentLoaded', initThemeToggle);
+</script>
+
+<!-- Aviso visual de guardado -->
+<div id="save-feedback" class="feedback hidden">✔ Cambios guardados</div>
+
+<!-- Aviso de cancelación -->
+<div id="cancel-feedback" class="feedback hidden">✖ Cambios cancelados</div>
+
+
+
+
+
+
+
+</body>
+</html>
