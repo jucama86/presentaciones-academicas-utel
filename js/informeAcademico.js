@@ -34,3 +34,32 @@ window.addEventListener('DOMContentLoaded', () => {
   calcularFinalEvaluacion();
   mostrarFechaEvaluacion();
 });
+
+function guardarEvaluacionFirebase(profesorId, semana) {
+  const evaluacion = {
+    contenido: document.getElementById("contenido").value,
+    organizacion: document.getElementById("organizacion").value,
+    fuentes: document.getElementById("fuentes").value,
+    apa: document.getElementById("apa").value,
+    notaFinal: document.getElementById("finalScore").value,
+    retroalimentacion: document.getElementById("retro").value,
+    fecha: new Date().toISOString(),
+  };
+
+  db.ref(`evaluaciones/${profesorId}/${semana}`).set(evaluacion);
+}
+
+function cargarEvaluacionFirebase(profesorId, semana) {
+  db.ref(`evaluaciones/${profesorId}/${semana}`).once("value").then(snapshot => {
+    const datos = snapshot.val();
+    if (datos) {
+      document.getElementById("contenido").value = datos.contenido;
+      document.getElementById("organizacion").value = datos.organizacion;
+      document.getElementById("fuentes").value = datos.fuentes;
+      document.getElementById("apa").value = datos.apa;
+      document.getElementById("finalScore").value = datos.notaFinal;
+      document.getElementById("retro").value = datos.retroalimentacion;
+      document.getElementById("fechaEvaluacion").textContent = new Date(datos.fecha).toLocaleDateString();
+    }
+  });
+}
