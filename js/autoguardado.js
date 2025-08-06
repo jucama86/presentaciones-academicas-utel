@@ -38,4 +38,14 @@ function cargarSlidesDinamicas() {
     // (Esto puede necesitar ajuste si se quieren guardar en posiciones exactas)
     ultimaSlideFija.after(sl);
   });
+
+}
+
+import { db } from "./firebase-setup.js";
+import { ref, set } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+// Ejemplo para guardar contenido
+function guardarCampo(idCampo, contenidoHTML) {
+  const ruta = `presentacion/${idCampo}`;
+  set(ref(db, ruta), contenidoHTML);
 }
