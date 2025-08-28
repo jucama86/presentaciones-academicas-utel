@@ -989,7 +989,10 @@ body.quill-read-only .quill-target {
 
 @page {
   size: letter portrait;
-  margin: 2cm;
+  margin-top: 2.54cm;
+  margin-right: 2.54cm;
+  margin-bottom: 2.54cm;
+  margin-left: 2.54cm;
 }
 
 
@@ -1087,5 +1090,6 @@ body.quill-read-only .quill-target {
     }
   }
 */
+
 
 
