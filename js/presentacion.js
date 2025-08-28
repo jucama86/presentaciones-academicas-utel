@@ -46,6 +46,13 @@ if (esSubpagina) return; // No la agregamos al índice principal
 
 
 
+/*      const li = document.createElement("li");
+      li.textContent = title;
+      li.onclick = () => {
+        showSlide(i);
+        menuIndice.classList.remove("activo");
+      };*/
+
 let li;
 
 if (title === "Desarrollo") {
@@ -111,6 +118,10 @@ if (title === "Desarrollo") {
     menuIndice.classList.remove("activo");
   };
 }
+
+
+
+
 
 
 
