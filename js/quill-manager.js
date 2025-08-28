@@ -137,6 +137,17 @@ if (videoBtn) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 // 🔧 Inicialización del editor (Quill interno, no visible)
 const quill = new Quill("#editor", {
   theme: "snow",
@@ -215,6 +226,19 @@ urlBtn.addEventListener("click", () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //  Botón INSERTAR TABLA
 document.getElementById('insert-table-btn').addEventListener('click', () => {
   const table = document.createElement('table');
@@ -235,6 +259,8 @@ document.getElementById('insert-table-btn').addEventListener('click', () => {
 
   this.activeTarget.appendChild(table);
 });
+
+
 
 
 
@@ -261,6 +287,7 @@ toolbar.addEventListener('click', (e) => {
     setTimeout(() => btn.classList.remove('active'), 1000);
   }
 });
+
 
   
 
@@ -420,3 +447,7 @@ if (!targetElement.hasAttribute('data-original-content')) {
 
 // Iniciar el gestor
 const quillManager = new QuillManager();
+
+
+
+
