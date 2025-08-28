@@ -985,6 +985,11 @@ body.quill-read-only .quill-target {
   .none {
     padding: 3cm;
   }
+/* Márgenes APA para el editor Quill */
+  .ql-editor {
+    padding: 2.54cm !important;
+    box-sizing: border-box;
+  }
 }
 
 @page {
@@ -996,6 +1001,12 @@ body.quill-read-only .quill-target {
 }
 
 
+/* 🧾 Trabajar con margenes en presentación */
+
+.ql-editor {
+  padding: 2.54cm;
+  box-sizing: border-box;
+}
 
 
 
@@ -1090,6 +1101,7 @@ body.quill-read-only .quill-target {
     }
   }
 */
+
 
 
 
