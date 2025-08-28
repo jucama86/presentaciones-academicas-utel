@@ -63,7 +63,11 @@
     <div class="none">
       <h2>Agradecimientos</h2><div id="content-agradecimientos" class="quill-target">Gracias a UTEL, al profesor y al equipo académico....</div>
       <br><br>
-    
+    <!--  <button id="btn-evaluacion" class="boton-cristal">Calificar ensayo</button>
+      <div id="modal-evaluacion" class="modal hidden"><div class="modal-content"><button id="cerrar-evaluacion" class="modal-close">&times;</button><img src="assets/img/Certificado_morado.png" alt="Icono de informe" class="icono-informe" /><p class="subtitulo-evaluacion">Informe Académico</p><label for="comentario">Comentario del profesor:</label><textarea id="comentario-profesor" placeholder="Escribe aquí tu retroalimentación..." rows="4"></textarea><label for="nota">Calificación:</label><input type="number" id="nota-final" min="0" max="100" /><div class="modal-buttons"><button id="guardar-evaluacion" class="boton-cristal">Guardar evaluación</button></div></div></div>
+      <div id="evaluacion-final" class="panel-evaluacion hidden"><div class="encabezado-informe"><img src="assets/img/certificado.png" alt="Ícono claro" class="icono-informe solo-web" /><img src="assets/img/Certificado_morado.png" alt="Ícono oscuro" class="icono-informe solo-print" /><p class="subtitulo-evaluacion">Informe Académico</p></div><p><strong>Comentarios:</strong> <span id="comentario-visible"></span></p><p><strong>Calificación:</strong> <span id="nota-visible"></span></p><p><strong>Evaluado por:</strong> <span id="evaluado-por"></span></p><p><strong>Fecha:</strong> <span id="fecha-evaluacion"></span></p></div>
+      <button class="boton-imprimir" onclick="window.print()">Exportar PDF</button>
+    </div>-->
   </section>
 
 
@@ -198,6 +202,34 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Botón con ícono 
+<button id="insert-image-trigger" class="quill-action" title="Agregar imagen">
+  <img src="assets/img/add-image.svg" alt="Insertar Imagen" style="width:24px; height:24px;" />
+</button>
+
+ Modal 
+<div id="image-modal" style="display:none;">
+  <p>¿Elige la opcion?</p>
+  <button id="choose-file-btn">Local</button>
+  <button id="choose-url-btn">URL</button>
+  <input type="file" id="image-upload" accept="image/*" style="display:none" />
+</div>-->
+
+
 <!-- Contenedor del editor -->
 <div id="editor"></div>
 
@@ -240,7 +272,18 @@
   </button>
 </span>
   <button id="insert-table-btn">Tabla</button>
-     
+  
+
+  <!--BORRAR ESTO
+  <span class="ql-formats" id="quill-toolbar-actions" style="display:flex; gap:8px; margin-top:6px;">
+    <button class="quill-action quill-undo" title="Deshacer cambios">⤺</button>
+    <button class="quill-action quill-redo" title="Rehacer cambios">⤻</button>
+    <button id="quill-accept" class="quill-action" title="Aceptar edición">✔</button>
+    <button id="quill-cancel" class="quill-action" title="Cancelar edición">✖</button>
+  </span>  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/quill-better-table@1.2.10/dist/quill-better-table.min.js"></sc
+--> 
 </div>
 
 
@@ -270,6 +313,12 @@
 
 <!-- Boton modo oscuro -->
 <div id="darkModeToggle">🌙</div>
+
+<!-- Cargar el MODULO modo oscuro 
+<script type="module">
+  import { initThemeToggle } from './js/dark-mode.js';
+  window.addEventListener('DOMContentLoaded', initThemeToggle);
+</script> -->
 
 
 <script>
