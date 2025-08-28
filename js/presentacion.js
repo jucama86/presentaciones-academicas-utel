@@ -40,12 +40,79 @@ document.addEventListener("DOMContentLoaded", () => {
       const title = sl.dataset.titulo || `Página ${i + 1}`;
       if (title === 'Final') return;
 
-      const li = document.createElement("li");
-      li.textContent = title;
-      li.onclick = () => {
-        showSlide(i);
+
+const esSubpagina = sl.classList.contains("subpagina");
+if (esSubpagina) return; // No la agregamos al índice principal
+
+
+
+let li;
+
+if (title === "Desarrollo") {
+  li = document.createElement("li");
+
+  const toggleBtn = document.createElement("button");
+  toggleBtn.textContent = "➕ Desarrollo";
+  toggleBtn.id = "toggle-desarrollo";
+
+  const subUl = document.createElement("ul");
+  subUl.id = "subdesarrollo";
+  subUl.style.display = "none";
+  subUl.style.marginLeft = "1em";
+
+  toggleBtn.onclick = () => {
+    const visible = subUl.style.display === "block";
+    subUl.style.display = visible ? "none" : "block";
+    toggleBtn.textContent = visible ? "➕ Desarrollo" : "➖ Desarrollo";
+  };
+
+  li.appendChild(toggleBtn);
+  li.appendChild(subUl);
+
+  // 👇 Agregamos las subpáginas
+  const subContenedor = sl.querySelector(".subpaginas");
+  if (subContenedor) {
+    const subSlides = subContenedor.querySelectorAll("section");
+    subSlides.forEach((sub, idx) => {
+      const subTitle = sub.dataset.titulo || `Subpágina ${idx + 1}`;
+      const subLi = document.createElement("li");
+      subLi.textContent = `↳ ${subTitle}`;
+      subLi.onclick = () => {
+        showSlide([...sections].indexOf(sub));
         menuIndice.classList.remove("activo");
       };
+
+      const btnSubDel = document.createElement("button");
+      btnSubDel.textContent = "🗑️";
+      btnSubDel.className = "btn-delete-slide";
+      btnSubDel.onclick = e => {
+        e.stopPropagation();
+        if (confirm(`¿Borrar subpágina "${subTitle}"?`)) {
+          const target = sub.querySelector('.quill-target');
+          if (target) quillManager.handleTargetDeletion(target);
+          sub.remove();
+          sections = document.querySelectorAll("section");
+          reconstruirIndice();
+          guardarSlidesDinamicas();
+          quillManager.saveAllTargetsToStorage();
+          showSlide(current >= sections.length ? sections.length - 1 : current);
+        }
+      };
+
+      subLi.appendChild(btnSubDel);
+      subUl.appendChild(subLi);
+    });
+  }
+} else {
+  li = document.createElement("li");
+  li.textContent = title;
+  li.onclick = () => {
+    showSlide(i);
+    menuIndice.classList.remove("activo");
+  };
+}
+
+
 
       if (sl.dataset.dynamic === "true") {
         const btnDel = document.createElement("button");
@@ -75,8 +142,45 @@ document.addEventListener("DOMContentLoaded", () => {
         li.appendChild(btnDel);
       }
       ul.appendChild(li);
-    });
-  }
+    // 👇 También agregamos las subpáginas (si existen)
+    const subContenedor = sl.querySelector(".subpaginas");
+    if (subContenedor) {
+      const subSlides = subContenedor.querySelectorAll("section");
+
+      subSlides.forEach((sub, idx) => {
+        const subTitle = sub.dataset.titulo || `Subpágina ${idx + 1}`;
+        const subLi = document.createElement("li");
+        subLi.textContent = `↳ ${subTitle}`;
+        subLi.onclick = () => {
+          showSlide([...sections].indexOf(sub)); // Buscamos su índice real
+          menuIndice.classList.remove("activo");
+        };
+
+        const btnSubDel = document.createElement("button");
+        btnSubDel.textContent = "🗑️";
+        btnSubDel.className = "btn-delete-slide";
+        btnSubDel.onclick = e => {
+          e.stopPropagation();
+          if (confirm(`¿Borrar subpágina "${subTitle}"?`)) {
+            const target = sub.querySelector('.quill-target');
+            if(target) {
+              quillManager.handleTargetDeletion(target);
+            }
+            sub.remove();
+            sections = document.querySelectorAll("section");
+            reconstruirIndice();
+            guardarSlidesDinamicas();
+            quillManager.saveAllTargetsToStorage();
+            showSlide(current >= sections.length ? sections.length - 1 : current);
+          }
+        };
+
+        subLi.appendChild(btnSubDel);
+        ul.appendChild(subLi);
+      });
+    }
+  });
+}
 
   function showSlide(index) {
     const esIntro = index === -1;
@@ -150,12 +254,31 @@ document.addEventListener("DOMContentLoaded", () => {
     
     targetDiv.id = `content-dynamic-${Date.now()}`;
     targetDiv.innerHTML = `<p>${texto.replace(/\n/g, '<br>')}</p>`;
-    
-    newSlide.dataset.titulo = tipo;
-    newSlide.querySelector(".shape-seccion").textContent = tipo;
-    newSlide.querySelector("h2").textContent = tipo;
-    
-    sections[afterIndex].after(newSlide);
+
+
+	// 👇 Aquí comienza el bloque de subpáginas
+	const seccionContenedora = document.querySelectorAll("section")[afterIndex];
+	let subContenedor = seccionContenedora.querySelector(".subpaginas");
+	if (!subContenedor) {
+	  subContenedor = document.createElement("div");
+	  subContenedor.classList.add("subpaginas");
+	  seccionContenedora.appendChild(subContenedor);
+	}
+
+	const numSubpaginas = subContenedor.querySelectorAll("section").length + 1;
+	const tituloCapitulo = seccionContenedora.dataset.titulo;
+	const tituloSubpagina = `Subpágina de ${tituloCapitulo} ${numSubpaginas}`;
+
+	newSlide.dataset.titulo = tituloSubpagina;
+	newSlide.classList.add("subpagina");
+	newSlide.querySelector(".shape-seccion").textContent = tituloSubpagina;
+	newSlide.querySelector("h2").textContent = tituloSubpagina;
+
+	newSlide.setAttribute("data-dynamic", "true");
+
+	subContenedor.appendChild(newSlide);
+
+
     
     contentTextarea.value = "";
     sections = document.querySelectorAll("section");
