@@ -137,17 +137,6 @@ if (videoBtn) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 // 🔧 Inicialización del editor (Quill interno, no visible)
 const quill = new Quill("#editor", {
   theme: "snow",
@@ -226,19 +215,6 @@ urlBtn.addEventListener("click", () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //  Botón INSERTAR TABLA
 document.getElementById('insert-table-btn').addEventListener('click', () => {
   const table = document.createElement('table');
@@ -259,8 +235,6 @@ document.getElementById('insert-table-btn').addEventListener('click', () => {
 
   this.activeTarget.appendChild(table);
 });
-
-
 
 
 
@@ -287,7 +261,6 @@ toolbar.addEventListener('click', (e) => {
     setTimeout(() => btn.classList.remove('active'), 1000);
   }
 });
-
 
   
 
@@ -435,6 +408,14 @@ if (!targetElement.hasAttribute('data-original-content')) {
     console.log(isOnline ? "🟢 Conexión restablecida." : "🔴 Estás offline. Los cambios se seguirán guardando localmente.");
     document.body.classList.toggle('offline', !isOnline);
   }
+  
+  handleTargetDeletion(target) {
+  const index = this.instances.findIndex(instance => instance.id === target.id);
+  if (index !== -1) {
+    this.instances.splice(index, 1);
+  }
+}
+  
 }
 
 // Iniciar el gestor
